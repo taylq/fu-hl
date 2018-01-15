@@ -8,11 +8,18 @@
       "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application",
       "data-turbolinks-track": "reload" %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   </head>
 
   <body>
-    <%= link_to t("application.language.en"), locale: :en %>
-    <%= link_to t("application.language.vi"), locale: :vi %>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <div class="container" style="min-height: 70vh;">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>

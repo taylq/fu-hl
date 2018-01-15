@@ -1,0 +1,45 @@
+<div class="login-page">
+  <div class="login-box">
+    <div class="logo">
+      <a><b>Login</b></a>
+      <small>Sign in to start your session</small>
+    </div>
+    <div class="card">
+      <div class="body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="input-group">
+          <span class="input-group-addon">
+              <i class="material-icons">person</i>
+          </span>
+          <div class="form-line">
+            <%= f.email_field :email, autofocus: true, class: "form-control",
+                placeholder: "Email Adrress"  %>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">
+              <i class="material-icons">lock</i>
+          </span>
+          <div class="form-line">
+            <%= f.password_field :password, autocomplete: "off",
+                class: "form-control", placeholder: "Password" %>
+          </div>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="row">
+            <div class="col-xs-8 p-t-5">
+              <%= f.check_box :remember_me, class: "filled-in chk-col-pink", id: "rememberme" %>
+              <label for="rememberme">Remember Me</label>
+            </div>
+            <div class="col-xs-4">
+              <%= f.submit "Log in", class: "btn btn-block bg-pink waves-effect" %>
+            </div>
+          </div>
+        <% end -%>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

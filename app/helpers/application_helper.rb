@@ -4,4 +4,8 @@ module ApplicationHelper
     return base_title if page_title.empty?
     base_title + " | " + page_title
   end
+
+  def area_choices
+    Area.pluck :name, :id
+  end
 end
